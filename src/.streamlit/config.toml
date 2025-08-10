@@ -1,0 +1,17 @@
+# .streamlit/config.toml
+
+[theme]
+# primaryColor is the main color of the Streamlit app
+primaryColor="#D94A56"
+
+# Background color of the main content area
+backgroundColor="#0F192A"
+
+# Widget background color
+secondaryBackgroundColor="#1C2B40"
+
+# Text Color
+textColor="#E8E9EB"
+
+# Font
+font="sans serif"

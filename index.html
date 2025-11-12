@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Village 9</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome für Icons (Schneeflocke) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Eigene CSS-Anpassungen */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Schneefall-Container */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        /* Schneefall-Animation */
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sanftes Einblenden beim Laden */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Aktiver Nav-Link Stil */
+        .nav-link.active {
+            color: #fff;
+            background-color: #1d4ed8; /* blue-700 */
+        }
+    </style>
+</head>
+<body class="bg-sky-50 text-gray-800 relative min-h-screen overflow-x-hidden">
+
+    <!-- Schneefall-Effekt -->
+    <div id="snow-container"></div>
+
+    <!-- Header / Navigation -->
+    <header class="bg-white/70 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-blue-700 flex items-center">
+                <i class="fas fa-snowflake mr-3 text-sky-500"></i>
+                Winter Village 9
+            </a>
+            <div class="flex space-x-2">
+                <a href="#" data-target="home" class="nav-link active px-4 py-2 rounded-lg font-semibold text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-300">Start</a>
+                <a href="#gallery" data-target="home-link" class="nav-link px-4 py-2 rounded-lg font-semibold text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-300">Galerie</a>
+                <a href="#" data-target="guide" class="nav-link px-4 py-2 rounded-lg font-semibold text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-300">Guide</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main>
+
+        <!-- =========== HOME SEITE =========== -->
+        <div id="home" class="content-page">
+            
+            <!-- Hero Sektion -->
+            <section class="min-h-[60vh] flex items-center justify-center text-center bg-gradient-to-b from-sky-300 to-blue-500 text-white relative overflow-hidden fade-in px-4">
+                <div class="relative z-10">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4" style="animation-delay: 0.2s;">Willkommen beim Winter Village 9!</h1>
+                    <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto" style="animation-delay: 0.4s;">
+                        Unser jährliches Minecraft-Bauprojekt geht in die neunte Runde. Seid dabei und baut mit uns ein episches Winterdorf!
+                    </p>
+                    <a href="#about" class="mt-8 inline-block bg-white text-blue-700 font-bold px-8 py-3 rounded-lg text-lg shadow-lg hover:scale-105 transform transition-transform duration-300" style="animation-delay: 0.6s;">
+                        Mehr erfahren
+                    </a>
+                </div>
+            </section>
+
+            <!-- Über Uns Sektion -->
+            <section id="about" class="max-w-6xl mx-auto py-20 px-4 fade-in" style="animation-delay: 0.5s;">
+                <h2 class="text-4xl font-bold text-center text-sky-800 mb-12">Was ist das Winter Village?</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Gemeinschaft. Kreativität. Winter.</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            Das Winter Village ist ein Community-Projekt, bei dem es darum geht, gemeinsam ein riesiges, winterliches Dorf in Minecraft zu erschaffen.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            Content Creator und Community-Mitglieder bauen Hand in Hand, tauschen sich aus und erschaffen unvergessliche Momente.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Das Wildcard-System</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            Content Creator erhalten durch ihre Spielzeit Wildcards, um ihre Community auf die Whitelist zu setzen.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            Auch reguläre Teilnehmer können sich durch Spielzeit Wildcards verdienen und ihre Freunde auf den Server einladen.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Sektion -->
+            <section class="bg-blue-600 text-white py-20">
+                <div class="max-w-6xl mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">Projekt-Features</h2>
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        
+                        <div class="bg-blue-700 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-store text-4xl text-sky-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Shop & Economy</h3>
+                            <p class="text-blue-100">Ein vollwertiges Wirtschaftssystem mit Spieler-Shops und Geldtransfer.</p>
+                        </div>
+                        
+                        <div class="bg-blue-700 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-map-marked-alt text-4xl text-sky-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Welt-Management</h3>
+                            <p class="text-blue-100">Eigene Farmwelten (Nether, End, Overworld), die regelmäßig resettet werden, und eine geschützte Bauwelt.</p>
+                        </div>
+
+                        <div class="bg-blue-700 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-gifts text-4xl text-sky-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Adventskalender</h3>
+                            <p class="text-blue-100">Tägliche Belohnungen mit "Special Items", die einzigartige Funktionen besitzen.</p>
+                        </div>
+
+                        <div class="bg-blue-700 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 md:col-start-2">
+                            <i class="fas fa-house-user text-4xl text-sky-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Plot & Home System</h3>
+                            <p class="text-blue-100">Grundstücksschutz und Teleport-Punkte (/home, public locations, /tpa).</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Galerie Sektion -->
+            <section id="gallery" class="max-w-6xl mx-auto py-20 px-4">
+                <h2 class="text-4xl font-bold text-center text-sky-800 mb-12">Galerie</h2>
+                <p class="text-center text-lg max-w-2xl mx-auto mb-12">
+                    Hier könnt ihr die schönsten Bauten und Momente aus den letzten Jahren und dem aktuellen Projekt sehen.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Jedes Bild ist in einem Container, um das Seitenverhältnis zu steuern und das Bild zuzuschneiden (object-cover) -->
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image1.png" alt="Winter Village Szene 1" class="gallery-img w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image2.png" alt="Winter Village Szene 2" class="gallery-img w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image3.png" alt="Winter Village Szene 3" class="gallery-img w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image4.png" alt="Winter Village Szene 4" class="gallery-img w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image5.png" alt="Winter Village Szene 5" class="gallery-img w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item-container aspect-[3/2] rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                        <img src="resources/image6.png" alt="Winter Village Szene 6" class="gallery-img w-full h-full object-cover">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- =========== GUIDE SEITE =========== -->
+        <div id="guide" class="content-page hidden">
+            <section class="max-w-4xl mx-auto py-20 px-4 fade-in">
+                <h1 class="text-5xl font-extrabold text-sky-800 mb-12 text-center">Winter Village Guide</h1>
+                
+                <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200 space-y-10">
+                    
+                    <!-- Hier könnt ihr eure Inhalte einfügen -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Welten-System</h2>
+                        <p class="text-lg mb-2">Wechsle zwischen den verschiedenen Welten des Servers.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/farmwelt normal/nether/end</code> - Teleportiert dich in die jeweilige Farmwelt (Overworld, Nether oder End). Diese Welten werden regelmäßig zurückgesetzt!</li>
+                            <li><code>/bauwelt</code> - Bringt dich zurück in die Haupt-Bauwelt, in der dein Fortschritt sicher ist.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Adventskalender</h2>
+                        <p class="text-lg mb-2">Öffne jeden Tag ein Türchen für spezielle Items.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/calendar</code> (oder <code>/ak</code>) - Öffnet das GUI des Adventskalenders.</li>
+                            <li><strong>Alternativ:</strong> Platziere ein Schild und schreibe <code>[ak]</code> oder <code>[calendar]</code> in die erste Zeile. Ein Rechtsklick auf das Schild öffnet ebenfalls den Kalender.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Economy-System</h2>
+                        <p class="text-lg mb-2">Verwalte deine Finanzen im Winter Village.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/transfer &lt;player&gt; &lt;sum&gt;</code> - Überweist den angegebenen Betrag an einen anderen Spieler.</li>
+                            <li><code>/balance</code> - Zeigt deinen aktuellen Kontostand an.</li>
+                            <li><code>/transactions</code> - Listet deine letzten Transaktionen auf.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Shop-System</h2>
+                        <p class="text-lg mb-2">Erstelle deinen eigenen Shop und verkaufe Items.</p>
+                        <h4 class="text-xl font-semibold text-sky-800 mt-4 mb-2">Shop erstellen:</h4>
+                        <p class="text-lg mb-2">1. Platziere ein Schild und beschrifte es wie folgt:</p>
+                        <pre class="bg-gray-100 p-4 rounded-lg text-gray-700 font-mono my-2">
+[shop]
+SHOP-NAME
+PRICE-PER-PIECE
+</pre>
+                        <p class="text-lg mb-2">2. Schließe den Schild-Editor.</p>
+                        <p class="text-lg mb-4">3. Mache einen Rechtsklick mit dem Item, das du verkaufen möchtest, auf das Schild.</p>
+                        
+                        <h4 class="text-xl font-semibold text-sky-800 mt-4 mb-2">Shop verwalten (Als Owner):</h4>
+                        <p class="text-lg mb-2">Ein Rechtsklick auf deinen eigenen Shop öffnet das "Stock Inventory". Hier kannst du Items einlagern (Stock auffüllen) oder herausnehmen.</p>
+                        
+                        <h4 class="text-xl font-semibold text-sky-800 mt-4 mb-2">Items kaufen (Als Spieler):</h4>
+                        <p class="text-lg mb-2">Ein Rechtsklick auf einen fremden Shop öffnet ein Kauf-GUI. Dort kannst du die gewünschte Menge auswählen und die Items kaufen.</p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Location-System (Homes)</h2>
+                        <p class="text-lg mb-2">Setze private und öffentliche Teleport-Punkte.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/sethome</code> - Setzt deinen privaten Home-Punkt an deiner aktuellen Position.</li>
+                            <li><code>/home</code> - Teleportiert dich zu deinem gesetzten Home-Punkt.</li>
+                            <li><code>/location set &lt;NAME&gt;</code> - Erstellt eine öffentliche Location (Warp) mit dem angegebenen Namen. Pro Spieler ist nur eine Location möglich.</li>
+                            <li><code>/location teleport &lt;NAME&gt;</code> - Teleportiert dich zu einer öffentlichen Location eines Spielers.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">Plot-System (Grundstücke)</h2>
+                        <p class="text-lg mb-2">Schütze dein Bauland mit einem Plot.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/plot setup</code> - Startet den Setup-Modus. Du erhältst eine Holzaxt (Wooden Axe), um die zwei Eckpunkte deines Plots durch Klicken auszuwählen.</li>
+                            <li><code>/plot create &lt;name&gt;</code> - Erstellt das Plot mit dem gewählten Namen, nachdem beide Ecken markiert wurden.</li>
+                            <li><code>/plot cancel</code> - Bricht den Setup-Prozess ab.</li>
+                            <li><code>/plot confirm</code> - Bestätigt die Erstellung des Plots. (Hinweis: Plots kosten nach dem ersten WV$!)</li>
+                            <li><code>/plot member add/remove &lt;PLAYER&gt;</code> - Fügt einen Spieler zu deinem Plot hinzu oder entfernt ihn. Du musst dafür auf dem Plot stehen.</li>
+                            <li><code>/plot owner &lt;PLAYER&gt;</code> - Überträgt das Eigentum des Plots an einen anderen Spieler. Kann nur vom aktuellen Owner durchgeführt werden, während er auf dem Plot steht.</li>
+                            <li><code>/plot showBorders</code> - Zeigt (oder verbirgt) die Grenzen aller Plots um dich herum durch Partikel. Sehr hilfreich beim Erstellen neuer Plots!</li>
+                            <li><code>/plot info</code> - Zeigt dir Informationen über das Plot an, auf dem du dich gerade befindest.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">TPA-System (Teleport-Anfragen)</h2>
+                        <p class="text-lg mb-2">Teleportiere dich zu anderen Spielern.</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li><code>/tpa send &lt;player&gt;</code> - Sendet eine Teleport-Anfrage (TPA-Request) an den angegebenen Spieler.</li>
+                            <li><code>/tpa accept &lt;player&gt;</code> - Akzeptiert eine offene TPA-Anfrage von diesem Spieler.</li>
+                            <li><code>/tpa decline &lt;player&gt;</code> - Lehnt eine offene TPA-Anfrage von diesem Spieler ab.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 mt-20 py-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2025 Winter Village 9 - Ein Minecraft Community Projekt.</p>
+        </div>
+    </footer>
+
+    <!-- Galerie Modal (Großansicht) -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[10000] hidden">
+        <div class="relative max-w-4xl max-h-[90vh]">
+            <img id="modal-img" src="" alt="Galerie Großansicht" class="rounded-lg shadow-2xl max-w-full max-h-[90vh]">
+            <button id="modal-close" class="absolute top-2 right-2 text-white bg-red-600 rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold">&times;</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Schneefall-Skript ---
+            const snowContainer = document.getElementById('snow-container');
+            const snowflakesCount = 100;
+
+            for (let i = 0; i < snowflakesCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                
+                const size = Math.random() * 5 + 2; // 2px bis 7px
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                
+                snowflake.style.left = `${Math.random() * 100}%`;
+                
+                const animationDuration = Math.random() * 10 + 5; // 5s bis 15s
+                snowflake.style.animationDuration = `${animationDuration}s`;
+                
+                const animationDelay = Math.random() * 10; // 0s bis 10s
+                snowflake.style.animationDelay = `${animationDelay}s`;
+                
+                snowflake.style.opacity = Math.random() * 0.7 + 0.2; // 0.2 bis 0.9
+
+                snowContainer.appendChild(snowflake);
+            }
+
+            // --- Seiten-Navigation (SPA) ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPages = document.querySelectorAll('.content-page');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('data-target');
+
+                    // Scrollen für Anker-Links (Galerie)
+                    if (targetId === 'home-link') {
+                        // Zuerst sicherstellen, dass die Home-Seite sichtbar ist
+                        showPage('home');
+                        // Dann zum Anker scrollen
+                        document.querySelector('#gallery').scrollIntoView({ behavior: 'smooth' });
+                    } else if (targetId) {
+                        showPage(targetId);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            function showPage(pageId) {
+                // Alle Seiten ausblenden
+                contentPages.forEach(page => {
+                    page.classList.add('hidden');
+                });
+                // Ziel-Seite einblenden
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+
+                // Aktiven Status der Nav-Links aktualisieren
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-target') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                    // Sonderfall: Galerie-Link soll "Start" aktiv lassen
+                    if (pageId === 'home' && link.getAttribute('data-target') === 'home') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // --- Galerie Modal Skript ---
+            const modal = document.getElementById('gallery-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalClose = document.getElementById('modal-close');
+            const galleryItems = document.querySelectorAll('.gallery-item-container'); // Geändert von .gallery-item
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('.gallery-img'); // Hinzugefügt, um das Bild im Container zu finden
+                    if (img) { // Sicherstellen, dass ein Bild vorhanden ist
+                        modal.classList.remove('hidden');
+                        modalImg.src = img.src; // Geändert, um die src vom gefundenen Bild zu nehmen
+                    }
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modalImg.src = "";
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            // Schließen bei Klick außerhalb des Bildes
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

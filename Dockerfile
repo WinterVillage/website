@@ -1,16 +1,13 @@
-FROM nginx:alpine
+# Use a lightweight Python image
+FROM python:3.13-alpine
 
-WORKDIR /usr/share/nginx/html
+# Set the working directory inside the container
+WORKDIR /app
 
-# Remove default nginx content
-RUN rm -rf ./*
-
-# Copy static site files
+# Copy the static website files into the container
 COPY ./index.html .
 COPY ./resources ./resources
 
-# Copy custom nginx configuration
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-# Do NOT EXPOSE any port here; Coolify will handle port mapping.
-CMD ["nginx", "-g", "daemon off;"]
+# Command to start Python's built-in HTTP server on port 8000.
+# Ensure Coolify is configured to use port 8000 for this service.
+CMD ["python", "-m", "http.server", "8000", "--bind", "0.0.0.0"]

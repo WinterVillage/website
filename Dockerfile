@@ -1,22 +1,14 @@
-# 1. Start with an official Python base image
-FROM python:3.13-slim
+# ...existing code...
+FROM nginx:alpine
 
-# 2. Set the working directory inside the container
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
 
-# 3. Copy the requirements file into the container
-COPY requirements.txt .
+# Remove default nginx content then copy your static site files
+RUN rm -rf ./*
 
-# 4. Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 5. Copy your application code into the container
-# This copies both the 'src' and 'resources' folders
-COPY ./src ./src
+COPY ./index.html .
 COPY ./resources ./resources
 
-# 6. Expose the port that Streamlit runs on
-EXPOSE 8501
-
-# 7. Define the command to run your app when the container starts
-CMD ["streamlit", "run", "src/main.py"]
+# Do NOT EXPOSE any port here; Coolify will handle port mapping.
+CMD ["nginx", "-g", "daemon off;"]
+# ...existing code...

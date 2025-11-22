@@ -337,9 +337,17 @@
             <div class="ip-bar">
                 <div>
                     <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.4rem;">Server Adresse</div>
-                    <div class="ip-address" id="ip-display">minecraft.wintervillage.de</div>
+                    <div class="ip-address" id="ip-display-mc">minecraft.wintervillage.de</div>
                 </div>
-                <div class="copy-hint" onclick="copyIP()">Adresse kopieren</div>
+                <div class="copy-hint" onclick="copyIP('minecraft.wintervillage.de', this)">Adresse kopieren</div>
+            </div>
+
+            <div class="ip-bar">
+                <div>
+                    <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.4rem;">Discord Adresse</div>
+                    <div class="ip-address" id="ip-display-dc">discord.wintervillage.de</div>
+                </div>
+                <div class="copy-hint" onclick="copyIP('discord.wintervillage.de', this)">Adresse kopieren</div>
             </div>
 
             <h2 style="font-size:1.2rem; margin-bottom:1.5rem; color: var(--text-main);">Das erwartet dich dieses Jahr</h2>
@@ -584,16 +592,19 @@
         }
 
         // --- COPY IP LOGIC ---
-        function copyIP() {
-            const ip = "minecraft.wintervillage.de";
-            const el = document.querySelector('.copy-hint');
+        function copyIP(ip, element) {
+            // Wir benutzen direkt das übergebene Element, kein querySelector mehr nötig!
+            const el = element; 
             
             navigator.clipboard.writeText(ip).then(() => {
+                // Speichere den aktuellen Text (falls du später mal was anderes als "Adresse kopieren" drin stehen hast)
                 const original = el.innerText;
+                
                 el.innerText = "Kopiert ✓";
                 el.style.color = "var(--accent-frost)";
+                
                 setTimeout(() => {
-                    el.innerText = original;
+                    el.innerText = original; // Setzt den Text zurück, der vorher da war
                     el.style.color = "";
                 }, 2000);
             });
